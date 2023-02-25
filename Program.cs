@@ -14,13 +14,15 @@ internal class Program
 		jc.Prop("aaa", "A\tA\"A\"");
 		jc.Prop("bbb", "BBB");
 		jc.Prop("ccc", "CCC");
+		jc.Prop("nul", (string?)null, true);
+		jc.Prop("---", (string?)null);
 		jc.CloseObject();
 		jc.Prop("four", 44.4);
 		jc.Prop("five", 555);
 		jc.CloseObject();
 
-	 Debug.WriteLine(jc);
-		//assert(jc.text == `{ "one":1,"two":"2222","three":{ "aaa":"A\tA\"A\"","bbb":"BBB","ccc":"CCC"},"four":44.4,"five":555}`);
+		Debug.WriteLine(jc);
+		Debug.Assert(jc.Text == """{"one":1,"two":"2222","three":{"aaa":"A\tA\"A\"","bbb":"BBB","ccc":"CCC","nul":null},"four":44.4,"five":555}""");
 
 		void print(string? s) { Debug.Write(s); }
 
